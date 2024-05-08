@@ -20,14 +20,42 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(100))
 
 
-class Category(Base):
-    __tablename__ = 'categories'
+class MainCategory(Base):
+    __tablename__ = 'main_categories'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(50))
 
 
-class Item(Base):
+class BootsCategory(Base):
+    __tablename__ = 'boots_categories'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+
+
+class ClothesCategory(Base):
+    __tablename__ = 'clothes_categories'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+
+
+class HatsCategory(Base):
+    __tablename__ = 'had_categories'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+
+
+class AccessoriesCategory(Base):
+    __tablename__ = 'accessories_categories'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+
+
+class BootsItem(Base):
     __tablename__ = 'items'
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -37,6 +65,37 @@ class Item(Base):
     category: Mapped[int] = mapped_column(ForeignKey('categories.id'))
     # Чтобы обратиться к вещи нам надо знать её категорию
     # Обращаемся мы к ней с помощью последней строчки
+
+
+class HatsItem(Base):
+    __tablename__ = 'items'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(150))# String(150) БД  требует ограничений
+    description: Mapped[str] = mapped_column(String(500))
+    price: Mapped[int] = mapped_column()
+    category: Mapped[int] = mapped_column(ForeignKey('categories.id'))
+
+
+class ClothesItem(Base):
+    __tablename__ = 'items'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(150))# String(150) БД  требует ограничений
+    description: Mapped[str] = mapped_column(String(500))
+    price: Mapped[int] = mapped_column()
+    category: Mapped[int] = mapped_column(ForeignKey('categories.id'))
+
+
+class AccessoriesItem(Base):
+    __tablename__ = 'items'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(150))# String(150) БД  требует ограничений
+    description: Mapped[str] = mapped_column(String(500))
+    price: Mapped[int] = mapped_column()
+    category: Mapped[int] = mapped_column(ForeignKey('categories.id'))
+
 
 
 async def async_main():

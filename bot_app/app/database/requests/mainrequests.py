@@ -1,5 +1,5 @@
 from bot_app.app.database.models.mainmodels import async_session
-from bot_app.app.database.models.mainmodels import User, Category, Item
+from bot_app.app.database.models.mainmodels import User, Item, MainCategory, ClothesCategory, HatsCategory, BootsCategory, AccessoriesCategory
 from sqlalchemy import select
 
 #импорт БД  и модуля select для взятия значений внутри
@@ -13,7 +13,16 @@ async def set_user(tg_id: int) -> None:
             await session.commit()
 
 
-async def get_categories():
+async def get_main_categories():
+    async with async_session() as session:
+        return await session.scalars(select(MainCategory))
+
+
+async def get_main_category_category(main_category_id):
+    async with async_session() as session:
+        return await session.scalars(select(Category).where(MainCategory.category == main_category_id))
+
+async def get_categories(maincategory_id):
     async with async_session() as session:
         return await session.scalars(select(Category))
 
