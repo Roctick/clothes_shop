@@ -56,7 +56,7 @@ class AccessoriesCategory(Base):
 
 
 class BootsItem(Base):
-    __tablename__ = 'items'
+    __tablename__ = 'boot_items'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(150))# String(150) БД  требует ограничений
@@ -68,7 +68,7 @@ class BootsItem(Base):
 
 
 class HatsItem(Base):
-    __tablename__ = 'items'
+    __tablename__ = 'hats_items'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(150))# String(150) БД  требует ограничений
@@ -78,7 +78,7 @@ class HatsItem(Base):
 
 
 class ClothesItem(Base):
-    __tablename__ = 'items'
+    __tablename__ = 'clothes_items'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(150))# String(150) БД  требует ограничений
@@ -88,7 +88,7 @@ class ClothesItem(Base):
 
 
 class AccessoriesItem(Base):
-    __tablename__ = 'items'
+    __tablename__ = 'accessories_items'
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(150))# String(150) БД  требует ограничений
